@@ -171,26 +171,19 @@ function App() {
   const [dragStart, setDragStart] = useState(null);
   const [dragEnd, setDragEnd] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
+  const [controlsMinimized, setControlsMinimized] = useState(false);
 
   const mediaRecorderRef = useRef(null);
-  const audioContextRef = useRef(null);
   const lastSoundTime = useRef(0);
   
   const playSound = (type) => {
     if (!sounds) return;
     const now = Date.now();
-    if (now - lastSoundTime.current < 30) return;
+    if (now - lastSoundTime.current < 10) return;
     lastSoundTime.current = now;
     
     try {
-      if (!audioContextRef.current) {
-        audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
-      }
-      
-      const audioContext = audioContextRef.current;
-      if (audioContext.state === 'suspended') {
-        audioContext.resume();
-      }
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
       
       if (type === 'bomb') {
         // Explosion sound - rapid frequency drop
@@ -514,6 +507,8 @@ function App() {
     }
   }, [manualMode]);
 
+
+
   useEffect(() => {
     particlesRef.current.forEach(particle => particle.updateSpeed(speed));
   }, [speed]);
@@ -525,7 +520,12 @@ function App() {
       </div>
       {winner && <div className="winner">{winner}</div>}
       {winner && <button className="restart" onClick={init}>Restart</button>}
-      <div className="controls">
+      <div className={`controls ${controlsMinimized ? 'minimized' : ''}`}>
+        <button className="toggle-controls" onClick={() => setControlsMinimized(!controlsMinimized)}>
+          {controlsMinimized ? '⚙️' : '✕'}
+        </button>
+        {!controlsMinimized && (
+        <>
         <div className="count-controls">
           <div className="count-item">
             <label>🪨: {rockCount}</label>
@@ -584,6 +584,8 @@ function App() {
             <button className="stream-btn stop" onClick={stopStream}>⏹️ Stop</button>
           }
         </div>
+        </>
+        )}
       </div>
       <canvas 
         ref={canvasRef} 
