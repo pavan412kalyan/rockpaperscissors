@@ -1,0 +1,215 @@
+body {
+  margin: 0;
+  background: #111;
+  color: #fff;
+  font-family: sans-serif;
+}
+
+.app {
+  position: relative;
+}
+
+canvas {
+  display: block;
+  background: #222;
+}
+
+.scoreboard {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.7);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 18px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  z-index: 10;
+}
+
+.winner {
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: gold;
+  color: black;
+  padding: 10px 20px;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 6px;
+  box-shadow: 0 0 15px rgba(255,255,0,0.7);
+  z-index: 10;
+}
+
+.restart {
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 14px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background: #28a745;
+  color: white;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.controls {
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.count-controls {
+  background: rgba(0,0,0,0.7);
+  padding: 8px;
+  border-radius: 5px;
+  color: white;
+  font-size: 12px;
+}
+
+.count-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.count-item label {
+  width: 40px;
+  font-size: 14px;
+}
+
+.count-item input {
+  width: 80px;
+  margin-left: 8px;
+}
+
+.speed-control {
+  background: rgba(0,0,0,0.7);
+  padding: 8px;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+}
+
+.speed-control input {
+  width: 100px;
+  margin-left: 8px;
+}
+
+.position-controls {
+  display: flex;
+  gap: 5px;
+}
+
+.save-btn, .load-btn {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.save-btn {
+  background: #17a2b8;
+}
+
+.load-btn {
+  background: #6f42c1;
+}
+
+.reset-btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.feature-controls {
+  background: rgba(0,0,0,0.7);
+  padding: 8px;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.feature-controls input {
+  margin-right: 8px;
+}
+
+.manual-controls {
+  background: rgba(0,0,0,0.7);
+  padding: 8px;
+  border-radius: 5px;
+  color: white;
+}
+
+.type-selector {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 8px;
+}
+
+.type-selector button {
+  padding: 8px;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.type-selector button.active {
+  border-color: #007bff;
+  background: rgba(0,123,255,0.3);
+}
+
+.instruction {
+  font-size: 12px;
+  margin-bottom: 8px;
+  color: #ccc;
+}
+
+.start-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  background: #28a745;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.stream-controls {
+  align-self: flex-end;
+}
+
+.stream-btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  background: #dc3545;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.stream-btn.stop {
+  background: #6c757d;
+}
